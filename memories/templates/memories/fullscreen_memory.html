@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'memories/css/fullscreen_memory.css' %}">
+
+    <title>Title</title>
+</head>
+<body>
+
+    <main class="memory-page">
+
+        <a href="{% url 'memories_list' %}" class="back-btn">
+            ← Назад
+        </a>
+
+        <article class="memory-content">
+
+            <h1>{{ memory.title }}</h1>
+
+            <div class="memory-meta">
+                Создано {{ memory.created_at|date:"d.m.y H:i" }}
+
+                {% if memory.edited %}
+                    · Изменено {{ memory.updated_at|date:"d.m.y H:i" }}
+                {% endif %}
+            </div>
+
+            <div class="memory-text">
+                {{ memory.text|linebreaks }}
+            </div>
+
+            <div class="memory-actions">
+                <a href="{% url 'edit_memory' memory.id %}">
+                    Редактировать
+                </a>
+
+                <a href="{% url 'delete_memory' memory.id %}">
+                    Удалить
+                </a>
+            </div>
+
+        </article>
+
+    </main>
+
+</body>
+</html>

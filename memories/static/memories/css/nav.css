@@ -1,0 +1,143 @@
+.navigation{
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 70px;
+    background: white;
+    margin-left: 270px;
+    align-items: center;
+
+}
+
+.filters{
+    margin-left: 30px;
+    width: 296px;
+    max-height: 50px;
+    justify-content: center;
+    display: flex;
+    gap:5px;
+    background: white;
+    color: #222;
+    font-size: 15px;
+    outline: none;
+    transition: .2s;
+    border: 1px solid #E5E7EB;
+    border-radius: 14px;
+}
+
+.filters a{
+    background:#F1F5F9;
+    align-items: center;
+text-align: center;
+
+}
+
+.search-form {
+    display: flex;
+    gap: 10px;
+    margin-left:260px;
+    width: 500px;
+    max-width: 600px;
+    max-height: 50px;
+}
+
+.search-form input {
+    flex: 1;
+
+    padding: 14px 18px;
+
+    border: 1px solid #E5E7EB;
+    border-radius: 14px;
+
+    background: white;
+
+    color: #222;
+    font-size: 15px;
+
+    outline: none;
+
+    transition: .2s;
+}
+
+.search-form input::placeholder {
+    color: #9CA3AF;
+}
+
+.search-form input:focus {
+    border-color: #6366F1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, .08);
+}
+
+.search-form button {
+    padding: 14px 20px;
+
+    border: none;
+    border-radius: 14px;
+
+    background: #6366F1;
+    color: white;
+
+    font-size: 15px;
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.search-form button:hover {
+    background: #5558E8;
+}
+
+
+
+
+.language-switcher {
+    display: flex;
+
+    width: fit-content;
+
+    padding: 4px;
+
+    background: #F1F5F9;
+
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+
+    gap: 2px;
+    margin-left:10px ;
+}
+
+.language-option {
+    padding: 7px 11px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: #64748B;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        box-shadow .2s ease;
+}
+
+.language-option:hover {
+    color: #222;
+}
+
+.language-option.active {
+    background: white;
+
+    color: #222;
+
+    box-shadow:
+        0 1px 3px rgba(15, 23, 42, 0.10);
+}
+
+

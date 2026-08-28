@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    {% load i18n %}
+  <meta charset="UTF-8">
+  <title>Title</title>
+    <link rel="stylesheet" href="{% static 'memories/css/memories_list_page.css' %}">
+    <link rel="stylesheet" href="{% static 'memories/css/nav.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+
+<div class="layout">
+
+    <aside class="sidebar">
+
+        <h1 class="logo">MemoryVault</h1>
+
+        <nav class="menu">
+
+            <a href="{% url 'memories_list' %}">
+                 {% trans "Все воспоминания" %}
+            </a>
+
+            <a href="{% url 'favorites_memories_list'%} ">
+                {% trans "Избранное" %}
+            </a>
+
+            <a href=" {%url 'archives_memories_list' %}">
+                {% trans  "Архив" %}
+            </a>
+        <a href="{% url 'logout' %}"> {% trans "Выйти" %} </a>
+
+
+        </nav>
+        <a class="create-btn"
+           href="{% url 'create_memory' %}">
+            {% trans "+ Новая" %}
+        </a>
+
+
+    </aside>
+<div class="navigation">
+            <div class="filters">
+               <a href="?q={{ request.GET.q }}&sort=newest">
+                    {% trans "Новые" %}
+                </a>
+
+                <a href="?q={{ request.GET.q }}&sort=oldest">
+                   {% trans "Старые" %}
+                </a>
+
+                <a href="?q={{ request.GET.q }}&sort=title">
+                    {% trans "По названию" %}
+                </a>
+            </div>
+                <form method="get" class="search-form">
+                    <input
+                        type="text"
+                        name="q"
+                        placeholder="{% trans "Поиск воспоминаний..." %}"
+                        value="{{ request.GET.q }}"
+                    >
+
+                    <button type="submit">{% trans "Найти" %}</button>
+                </form>
+
+
+<form action="{% url 'set_language' %}" method="post" class="language-switcher">
+    {% csrf_token %}
+
+    {% get_current_language as LANGUAGE_CODE %}
+
+    <button
+        type="submit"
+        name="language"
+        value="ru"
+        class="language-option {% if LANGUAGE_CODE == 'ru' %}active{% endif %}"
+    >
+        RU
+    </button>
+
+    <button
+        type="submit"
+        name="language"
+        value="en"
+        class="language-option {% if LANGUAGE_CODE == 'en' %}active{% endif %}"
+    >
+        EN
+    </button>
+</form>
+
+        </div>
+    <main class="content">
+
+        <div class="memories_block">
+
+            {% for memory in memories %}
+
+                <div class="memory">
+                <a href="{% url 'fullscreen_memory' memory.id %}" class="memory-link">
+                    <h2>{{ memory.title }}</h2>
+                    <p>{{ memory.text }}</p>
+                </a>
+                    <p>
+                        {{ memory.created_at|date:"d.m.Y H:i" }}
+                    </p>
+
+                    {% if memory.edited %}
+                        <p>
+                            {% trans "Изменено:" %}
+                            {{ memory.updated_at|date:"d.m.Y H:i" }}
+                        </p>
+                    {% endif %}
+
+                    <div class="memory-actions">
+                        <a class="edit-btn" href="{% url 'edit_memory' memory.id %}">
+                            {% trans "Изменить" %}
+                        </a>
+
+                        <a class="delete-btn" href="{% url 'delete_memory' memory.id %}">
+                            {% trans "Удалить" %}
+                        </a>
+
+
+                    {% if memory.is_favorite%}
+                        <a href="{% url 'toggle_favorite' memory.id %}">
+                            ★
+                        </a>
+                        {% else %}
+                        <a href="{% url 'toggle_favorite' memory.id %}">
+                            ☆
+                        </a>
+                    {% endif %}
+                    <a href="{% url 'toggle_archive' memory.id %}">
+                        🗃️
+                    </a>
+                    </div>
+
+                </div>
+
+            {% empty %}
+
+                <p>{% trans "Заметок пока нет." %}</p>
+
+            {% endfor %}
+
+        </div>
+
+    </main>
+
+
+</div>
+
+</body>
+{% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="message {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+</html>
+</html>

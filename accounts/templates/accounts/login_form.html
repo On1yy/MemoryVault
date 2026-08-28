@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'accounts/css/login.css' %}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body>
+<div>
+    <a href="/" class="back-link">Назад<a/>
+</div>
+
+<div class="layout">
+    <form method="post">
+      {% csrf_token %}
+        <div class="fields">
+            <p>
+          {{form.as_p}}
+            </p>
+        </div>
+      <button class="Enter_button">
+        Войти
+      </button>
+    </form>
+</div>
+</body>
+</html>

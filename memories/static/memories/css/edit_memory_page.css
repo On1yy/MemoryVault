@@ -1,0 +1,183 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Inter, sans-serif;
+    background:#F6F7FB;
+}
+
+.layout{
+    display:flex;
+    min-height:100vh;
+}
+
+
+
+.sidebar{
+
+    width:260px;
+
+    background:white;
+
+    border-right:1px solid #E5E7EB;
+
+    padding:30px;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.logo{
+
+    font-size:28px;
+
+    margin-bottom:40px;
+
+    color:#222;
+}
+
+.menu{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+
+.menu, a, .edit-btn, .delete-btn{
+
+    text-decoration:none;
+
+    color:#444;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    transition:.2s;
+
+}
+
+.menu a,.edit-btn, .delete-btn:hover{
+
+    background:#F1F5F9;
+
+}
+
+.content{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+}
+
+
+.form-card{
+
+    width:550px;
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:22px;
+
+    box-shadow:0 6px 20px rgba(0,0,0,.06);
+}
+
+.form-card h2{
+
+    margin-bottom:30px;
+
+    color:#222;
+}
+
+
+form p{
+
+    margin-bottom:18px;
+}
+
+label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+    color:#555;
+}
+
+input,
+textarea{
+
+    width:100%;
+
+    padding:14px;
+
+    border:1px solid #D1D5DB;
+
+    border-radius:12px;
+
+    font-size:15px;
+
+    outline:none;
+}
+
+input:focus,
+textarea:focus{
+
+    border-color:#6366F1;
+}
+
+textarea{
+
+    resize:vertical;
+
+    min-height:180px;
+}
+
+
+button{
+
+    margin-top:15px;
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#6366F1;
+
+    color:white;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+button:hover{
+
+    background:#5558E8;
+}
+

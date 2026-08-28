@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% load static %}
+        {% load i18n %}
+    <meta charset="UTF-8">
+    <title>Создание воспоминания</title>
+
+    <link rel="stylesheet"
+          href="{% static 'memories/css/memories_create_page.css' %}">
+</head>
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+
+        <h1 class="logo">MemoryVault</h1>
+
+        <nav class="menu">
+
+            <a href="{% url 'memories_list' %}">
+                 {% trans "Все воспоминания" %}
+            </a>
+
+            <a href="{% url 'favorites_memories_list'%} ">
+                {% trans "Избранное" %}
+            </a>
+
+            <a href=" {%url 'archives_memories_list' %}">
+                {% trans  "Архив" %}
+            </a>
+        <a href="{% url 'logout' %}"> {% trans "Выйти" %} </a>
+
+
+        </nav>
+
+
+    </aside>
+
+<form action="{% url 'set_language' %}" method="post" class="language-switcher">
+    {% csrf_token %}
+
+    {% get_current_language as LANGUAGE_CODE %}
+
+    <button
+        type="submit"
+        name="language"
+        value="ru"
+        class="language-option {% if LANGUAGE_CODE == 'ru' %}active{% endif %}"
+    >
+        RU
+    </button>
+
+    <button
+        type="submit"
+        name="language"
+        value="en"
+        class="language-option {% if LANGUAGE_CODE == 'en' %}active{% endif %}"
+    >
+        EN
+    </button>
+</form>
+
+
+
+    <main class="content">
+
+        <div class="form-card">
+
+            <h2> {% trans  "Создание Воспоминания" %}</h2>
+
+            <form method="post">
+
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <button type="submit">
+                    {% trans  "Создать" %}
+                </button>
+
+            </form>
+
+        </div>
+
+    </main>
+</body>
+</html>

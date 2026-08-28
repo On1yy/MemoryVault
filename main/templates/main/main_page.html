@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+{% load static %}
+{% load i18n %}
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>MemoryVault</title>
+
+    <link rel="stylesheet"
+          href="{% static 'main/css/main_page.css' %}">
+</head>
+
+<body>
+
+<main class="welcome">
+
+    <div class="welcome-card">
+
+        <div class="logo">
+            MemoryVault
+        </div>
+
+        <h1>
+            {% trans "Храни свои воспоминания." %}
+        </h1>
+
+        <p class="description">
+            {% trans "Простое и уютное место для заметок, мыслей и воспоминаний. Создавай, сохраняй и возвращайся к ним в любое время." %}
+        </p>
+
+        <div class="actions">
+
+            <a href="{% url 'register' %}" class="button primary">
+                {% trans "Создать аккаунт" %}
+            </a>
+
+            <a href="{% url 'login' %}" class="button secondary">
+                {% trans "Войти" %}
+            </a>
+
+        </div>
+
+        <p class="hint">
+            {% trans "Твои воспоминания принадлежат только тебе." %}
+        </p>
+
+    </div>
+
+</main>
+
+</body>
+</html>

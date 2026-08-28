@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%load static%}
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'accounts/css/register.css' %}">
+</head>
+<body>
+<div>
+    <a href="/" class="back-link">Назад<a/>
+</div>
+
+<div class="layout">
+    <form method="post">
+      {% csrf_token %}
+        <div class="fields">
+            <p>
+          {{form.as_p}}
+            </p>
+        </div>
+      <button class="Register_button">
+        Зарегистрироваться
+      </button>
+    </form>
+</div>
+<body/>
+</html>
